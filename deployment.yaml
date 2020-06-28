@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-deployment
+  labels:
+    app: hello-deplomyent
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: hello-pod
+  template:
+    metadata:
+      labels:
+        app: hello-pod
+    spec:
+      containers:
+        - name: hello-container
+          image: busybox
+          command: ['sh', '-c', 'echo Hello from my container! && sleep 3600']
